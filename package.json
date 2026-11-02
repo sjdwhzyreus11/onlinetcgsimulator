@@ -1,0 +1,20 @@
+{
+  "name": "onlinetcgsimulator",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently -n web,realtime -c auto \"npm run dev -w @sim/web\" \"npm run dev -w @sim/realtime\"",
+    "dev:web": "npm run dev -w @sim/web",
+    "dev:realtime": "npm run dev -w @sim/realtime",
+    "build": "npm run build -w @sim/shared && npm run build -w @sim/realtime && npm run build -w @sim/web",
+    "lint": "npm run lint -w @sim/web",
+    "typecheck": "npm run typecheck -w @sim/shared && npm run typecheck -w @sim/realtime && npm run typecheck -w @sim/web",
+    "import:cards": "npm run build -w @sim/shared && node scripts/import-playloltcg-cards.mts"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

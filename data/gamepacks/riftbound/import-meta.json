@@ -1,0 +1,15 @@
+{
+  "importedAt": "2026-06-22T12:15:55.587Z",
+  "source": "https://playloltcg.com/card.html",
+  "apiBase": "https://lol-api.playloltcg.com",
+  "total": 1009,
+  "byType": {
+    "spell": 192,
+    "unit": 269,
+    "hero": 235,
+    "equipment": 100,
+    "legend": 106,
+    "battlefield": 59,
+    "rune": 48
+  }
+}

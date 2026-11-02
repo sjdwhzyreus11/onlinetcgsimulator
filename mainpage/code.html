@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TCG Sim - AETHER Hub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                "error-container": "#ffdad6",
+                "on-primary-fixed": "#001e2d",
+                "on-secondary-fixed-variant": "#434752",
+                "tertiary-fixed": "#ffdad9",
+                "surface": "#f9f9f9",
+                "tertiary": "#ba1830",
+                "primary-fixed": "#c6e7ff",
+                "outline": "#70787e",
+                "on-surface": "#1a1c1c",
+                "inverse-primary": "#8dcef7",
+                "secondary-container": "#dfe2f0",
+                "on-primary": "#ffffff",
+                "primary": "#176589",
+                "secondary": "#5a5e6a",
+                "surface-container-highest": "#e2e2e2",
+                "outline-variant": "#c0c7ce",
+                "secondary-fixed-dim": "#c3c6d4",
+                "on-primary-container": "#00435f",
+                "tertiary-fixed-dim": "#ffb3b2",
+                "surface-variant": "#e2e2e2",
+                "surface-container-low": "#f3f3f4",
+                "primary-fixed-dim": "#8dcef7",
+                "on-tertiary-fixed": "#410008",
+                "surface-bright": "#f9f9f9",
+                "on-tertiary": "#ffffff",
+                "surface-tint": "#176589",
+                "background": "#f9f9f9",
+                "surface-dim": "#dadada",
+                "inverse-on-surface": "#f0f1f1",
+                "on-error": "#ffffff",
+                "on-error-container": "#93000a",
+                "on-surface-variant": "#40484e",
+                "primary-container": "#70b1d9",
+                "on-secondary-fixed": "#171b25",
+                "error": "#ba1a1a",
+                "on-tertiary-fixed-variant": "#92001f",
+                "tertiary-container": "#ff8587",
+                "on-secondary": "#ffffff",
+                "secondary-fixed": "#dfe2f0",
+                "surface-container-high": "#e8e8e8",
+                "on-tertiary-container": "#82001a",
+                "on-secondary-container": "#606470",
+                "surface-container-lowest": "#ffffff",
+                "surface-container": "#eeeeee",
+                "on-primary-fixed-variant": "#004c6b",
+                "on-background": "#1a1c1c",
+                "inverse-surface": "#2f3131"
+              },
+              "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+              },
+              "spacing": {
+                "unit": "8px",
+                "section-margin": "48px",
+                "container-padding": "32px",
+                "card-gap": "16px",
+                "gutter": "24px"
+              },
+              "fontFamily": {
+                "headline-md": ["Inter"],
+                "display-lg": ["Inter"],
+                "label-sm": ["Inter"],
+                "body-base": ["Inter"]
+              },
+              "fontSize": {
+                "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                "body-base": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased">
+<!-- TopAppBar -->
+<nav class="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-8 h-16 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-100 dark:border-slate-800 shadow-[0_4px_20px_rgba(0,0,0,0.04)] font-['Inter'] antialiased tracking-tight">
+<div class="flex items-center gap-8">
+<span class="text-lg font-semibold tracking-tighter text-slate-900 dark:text-slate-50">TCG Sim</span>
+<div class="hidden md:flex items-center gap-6">
+<a class="text-sky-500 dark:text-sky-400 font-medium border-b-2 border-sky-500 pb-1 transition-all duration-200 ease-in-out active:scale-[0.98]" href="#">Games</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-all hover:bg-slate-50/50 dark:hover:bg-slate-900/50 rounded-md px-2 py-1" href="#">Decks</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-all hover:bg-slate-50/50 dark:hover:bg-slate-900/50 rounded-md px-2 py-1" href="#">Market</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-all hover:bg-slate-50/50 dark:hover:bg-slate-900/50 rounded-md px-2 py-1" href="#">Profile</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-500 hover:bg-slate-50/50 rounded-md transition-all">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-slate-500 hover:bg-slate-50/50 rounded-md transition-all">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+</nav>
+<main class="pt-24 pb-12">
+<!-- Hero Section -->
+<section class="max-w-7xl mx-auto px-8 mb-section-margin">
+<div class="relative overflow-hidden bg-white rounded-xl p-12 shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-slate-100">
+<div class="relative z-10 max-w-2xl">
+<h1 class="font-display-lg text-display-lg text-on-surface mb-4">
+                        The Ultimate TCG Hub.<br/>
+<span class="text-primary-container">Play your favorite games in one place.</span>
+</h1>
+<p class="font-body-base text-body-base text-on-surface-variant mb-8 max-w-lg">
+                        Experience the next generation of digital card gaming with AETHER's high-fidelity simulator. Competitive play, deck building, and a global marketplace.
+                    </p>
+<button class="px-8 py-4 bg-primary text-on-primary rounded-lg font-headline-md text-body-base hover:opacity-90 transition-all active:scale-95 flex items-center gap-2">
+<span>Match Now</span>
+<span class="material-symbols-outlined" data-icon="rocket_launch">rocket_launch</span>
+</button>
+</div>
+<!-- Decorative Abstract element -->
+<div class="absolute top-0 right-0 w-1/2 h-full hidden lg:block opacity-10">
+<img class="w-full h-full object-cover" data-alt="abstract modernist shapes with geometric glass-like panels and soft blue gradients on a white clean background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdVHnVsolJqNRAcCvJn7bwba9frUViM8xkPEoZFU_XNL2M3FMIVJ07MTAlYS2MSXORaT51wIDZM4J5GDjkAeYkmpBYzpVbS1h_ab17g_gcBSoyMXJfA9Jy_giT-KRKu7geeh1kUQbRDwlG0eLDtcok5ZQ-VcspckiW401oIhnMNLIYmsR93CsD7USQlg3FUV6w8kgptMDZxhITv1-47zp5G-hRelte4NJwqBlANe6Nqk0fExT5T22OEe2vc4xhIal2XIPr16tU_g"/>
+</div>
+</div>
+</section>
+<!-- Select Game Gallery -->
+<section class="max-w-7xl mx-auto px-8 mb-section-margin">
+<div class="flex items-end justify-between mb-gutter">
+<div>
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-widest block mb-2">Universe Selection</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Select Game</h2>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Game Card 1 -->
+<div class="group bg-white rounded-xl overflow-hidden border border-slate-100 shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] transition-all cursor-pointer">
+<div class="h-64 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="abstract digital artwork representing pocket monsters with soft glowing orbs and clean blue and white aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnSOWcxjzYvey0J-adGrE8MwN8pcBJfOBEYp_b85b570rDr9n60Trelbc0rpPlKiqmhQDb6-AyWYN5ixvTgnxwxCwBIiyiZ5yi6EmEN5lTjvoaHvoMAM0Tc0wu09E0TXQXSzgXUUYia7weUmf4V1OAgKg-WP4rjyPCqtlDsBcpiRwusfdoCrHDsmeQqENoeU1zfte2HLhRbagQ2apkkuuvBmSdqsQyAElGzaW9GEsXt8LffBs_3LL9hCqT3aZeb5zrmXTXLb4eWQ"/>
+</div>
+<div class="p-6">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-1">Pocket TCG (PTCG)</h3>
+<p class="font-body-base text-body-base text-on-surface-variant text-sm mb-4">Master the elemental spirits in high-stakes strategy.</p>
+<div class="flex items-center gap-2">
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container text-xs rounded-full font-label-sm uppercase">Active Season</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface-variant text-xs rounded-full font-label-sm uppercase">1.2M Players</span>
+</div>
+</div>
+</div>
+<!-- Game Card 2 -->
+<div class="group bg-white rounded-xl overflow-hidden border border-slate-100 shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] transition-all cursor-pointer">
+<div class="h-64 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="modernist architectural interpretation of ancient runes glowing with soft light in a white minimalist museum space" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3IqqPKwcrRUj51BPUN0bLIK-wyesqhrVSNKo10nKva040C2TUVR3SE2g4SIzx9_OtVy8ngsH_UpGEP9GsLYXUPROlycThS_3D1RFkEC6dbk3Q6ru9cegUCKRXpERp8YZL64Cjtk41ePqP-rrs46bfzLJdxnu12SIgye6hH85b4xOIAMsXkRPWiqZMsWXPAUkaxnWbYEXForGNcgIMTj19X_kAESVMTCdUqjH-tehJ6Jf9qPocpoqVT2on6HKJDoEtZ_1ykXsM-Q"/>
+</div>
+<div class="p-6">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-1">Runic Battle</h3>
+<p class="font-body-base text-body-base text-on-surface-variant text-sm mb-4">Ancient inscriptions meet modern tactical warfare.</p>
+<div class="flex items-center gap-2">
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container text-xs rounded-full font-label-sm uppercase">Ranked Only</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface-variant text-xs rounded-full font-label-sm uppercase">400K Players</span>
+</div>
+</div>
+</div>
+<!-- Game Card 3 -->
+<div class="group bg-white rounded-xl overflow-hidden border border-slate-100 shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] transition-all cursor-pointer">
+<div class="h-64 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="minimalist architectural model with clean lines white surfaces and subtle blue shadows in a high-end gallery" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMyB48MkzuMgG_MqE5GU1Gfi-Utjh9C63DJ-IDWS93NGKUQ6cpWiis9buh4bDAZQIrvUAda0_5iVPxNg7wBAhawq6s9P1k9nwasVy_Pw-HdDAsbEwGcdJiho46qXoyXH6i7jFcxphFPH3_iNMvs4EPvgaU2KQlRdW-oL67IBX1vntCOpTjOJadaxuH9i9mugGi9hnLKbI0TKp27vtsXHTyk3qF5i48-MkT4IGKzguewc2qxlrkbKBT-N-klWYCg1_E17U4W4BOgg"/>
+</div>
+<div class="p-6">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-1">Architectural Duel</h3>
+<p class="font-body-base text-body-base text-on-surface-variant text-sm mb-4">Construct the perfect defense in this design-led battler.</p>
+<div class="flex items-center gap-2">
+<span class="px-3 py-1 bg-tertiary-container text-on-tertiary-container text-xs rounded-full font-label-sm uppercase">New Release</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface-variant text-xs rounded-full font-label-sm uppercase">200K Players</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Active Decks & Quick Actions Bento -->
+<section class="max-w-7xl mx-auto px-8">
+<div class="grid grid-cols-1 lg:grid-cols-4 gap-gutter">
+<!-- Active Decks (Span 3) -->
+<div class="lg:col-span-3">
+<div class="flex items-center justify-between mb-6">
+<h2 class="font-headline-md text-headline-md text-on-surface">Active Decks <span class="text-slate-400 text-sm font-normal ml-2">Pocket TCG (PTCG)</span></h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-card-gap">
+<!-- Deck Card -->
+<div class="bg-white border border-slate-100 rounded-xl p-6 shadow-[0_4px_20px_rgba(0,0,0,0.04)] flex flex-col md:flex-row gap-6 items-center">
+<div class="w-24 h-32 bg-slate-50 rounded-lg overflow-hidden border border-slate-100 flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="minimalist card back design with a blue circular emblem on a white textured card surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCU4_cfWOdoJwM8VMDtaW9_Q3rdJhW-vjuajwksj2v2fiuYvHvpRzUrRYR0GMD_gI8l_C0hXwSjcrc8ftKzYy8sW-fFb64zGUvy8OeEqOMPM3h1CKSqCoqVOTREr8foQviMhaKu_dFHk49tL6EVvAn39E_Z5nlnP0lGuUX0BmnOg8WcGrqS5C-i31VgA9Yr39qUzaa5zfQd_Nk1zPD-XHVLYypOYJg8SvAIxUzT9m5BICz-KpvrheOLIVaOs2OzECZOlzCWj7b0RQ"/>
+</div>
+<div class="flex-grow text-center md:text-left">
+<h4 class="font-headline-md text-body-base font-semibold text-on-surface mb-1">Azure Currents v2</h4>
+<p class="text-xs text-on-surface-variant font-label-sm uppercase mb-4 tracking-tighter">60 Cards • Control Archetype</p>
+<button class="w-full py-2 bg-primary-container/10 text-on-primary-container border border-primary-container/20 rounded-lg font-label-sm hover:bg-primary-container hover:text-white transition-all active:scale-[0.98]">
+                                    MATCHMAKING
+                                </button>
+</div>
+</div>
+<!-- Deck Card -->
+<div class="bg-white border border-slate-100 rounded-xl p-6 shadow-[0_4px_20px_rgba(0,0,0,0.04)] flex flex-col md:flex-row gap-6 items-center">
+<div class="w-24 h-32 bg-slate-50 rounded-lg overflow-hidden border border-slate-100 flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="minimalist card design with red and gold geometric accents on a white premium card stock" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDP6nPiXbarO8g_zeXxehSv54H7yVfVrIyvNUPJWt-Mw8qJM4tY93ro4T_yqXNgJAat2toFcn4wp7bH0luzlRiDJMjg-1OeK7_WsWgNQHXz1P7xErpaWbgfdaGyaS69sMITVIACdgxBroWBQEzq_ykjokqKdiVZrW0waTiryBsK_6c-STogT4zydxVQyaosmG0yqkdyje5JF7utbwou0lTlAmOf36c5PqYt5rNqblVEtJ5WnORoZ1huROu69kjefIizxOoo8w72fA"/>
+</div>
+<div class="flex-grow text-center md:text-left">
+<h4 class="font-headline-md text-body-base font-semibold text-on-surface mb-1">Crimson Spire</h4>
+<p class="text-xs text-on-surface-variant font-label-sm uppercase mb-4 tracking-tighter">60 Cards • Aggro Archetype</p>
+<button class="w-full py-2 bg-primary-container/10 text-on-primary-container border border-primary-container/20 rounded-lg font-label-sm hover:bg-primary-container hover:text-white transition-all active:scale-[0.98]">
+                                    MATCHMAKING
+                                </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Actions (Span 1) -->
+<div class="flex flex-col gap-card-gap">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-6">Quick Actions</h2>
+<button class="group p-6 bg-white border border-slate-100 rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.04)] flex items-center justify-between hover:bg-primary-container transition-all text-left">
+<div>
+<span class="block font-headline-md text-body-base group-hover:text-white transition-colors">Create New Deck</span>
+<span class="text-xs text-on-surface-variant group-hover:text-white/80 transition-colors">Build your strategy</span>
+</div>
+<span class="material-symbols-outlined text-primary group-hover:text-white transition-colors" data-icon="add_circle">add_circle</span>
+</button>
+<button class="group p-6 bg-white border border-slate-100 rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.04)] flex items-center justify-between hover:bg-primary-container transition-all text-left">
+<div>
+<span class="block font-headline-md text-body-base group-hover:text-white transition-colors">Browse Market</span>
+<span class="text-xs text-on-surface-variant group-hover:text-white/80 transition-colors">Acquire rare cards</span>
+</div>
+<span class="material-symbols-outlined text-primary group-hover:text-white transition-colors" data-icon="shopping_bag">shopping_bag</span>
+</button>
+<div class="mt-auto p-6 bg-surface-container rounded-xl flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary-fixed-dim flex items-center justify-center text-on-primary-container font-bold">JD</div>
+<div>
+<p class="font-label-sm text-xs text-on-surface">James Duelist</p>
+<p class="text-[10px] text-on-surface-variant font-label-sm tracking-widest uppercase">Rank: Diamond II</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-white dark:bg-slate-950 border-t border-slate-100 dark:border-slate-800 mt-24">
+<div class="w-full py-12 px-8 flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto font-['Inter'] text-xs uppercase tracking-widest text-slate-400">
+<div class="mb-6 md:mb-0">
+                © 2024 Modernist TCG. All rights reserved.
+            </div>
+<div class="flex items-center gap-8">
+<a class="hover:text-sky-500 transition-colors hover:underline" href="#">Privacy</a>
+<a class="hover:text-sky-500 transition-colors hover:underline" href="#">Terms</a>
+<a class="hover:text-sky-500 transition-colors hover:underline" href="#">Support</a>
+<a class="hover:text-sky-500 transition-colors hover:underline" href="#">Contact</a>
+</div>
+</div>
+</footer>
+</body></html>
